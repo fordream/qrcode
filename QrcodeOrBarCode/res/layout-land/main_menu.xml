@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg2"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="50dip"
+    android:paddingRight="50dip" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gbuttuon_indicator"
+            android:padding="20dip"
+            android:scaleType="fitXY"
+            android:src="@drawable/g2" />
+
+        <Button
+            android:id="@+id/Button01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/btn_indicator"
+            android:text="Scan QRcode"
+            android:textColor="@color/white"
+            android:textSize="20dip"
+            android:typeface="serif"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/button1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/gbuttuon_indicator"
+            android:scaleType="fitXY"
+            android:src="@drawable/g1"
+            android:text="Scan Barcode/QRcode from image"
+            android:textColor="@color/white"
+            android:textSize="20dip"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/btn_indicator"
+            android:gravity="center"
+            android:hint="value"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/white"
+            android:textSize="20dip"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" >
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/Button02"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/gbuttuon_indicator"
+            android:scaleType="fitXY"
+            android:src="@drawable/g3"
+            android:text="Scan Barcode/QRcode"
+            android:textColor="@color/white"
+            android:textSize="20dip"
+            android:typeface="serif" />
+    </RelativeLayout>
+
+</LinearLayout>

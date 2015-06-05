@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="check_key">Please check your key number</string>
+    <string name="device_fail">Device fail</string>
+    <string name="not_paid">DQR Code has not been paid</string>
+    <string name="check_location">Please check your location</string>
+    <string name="check_time">You probably get one point, if you are not on time, earlier or later. You can get your message from {0}  to {1}</string>
+    
+</resources>
