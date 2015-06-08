@@ -1,5 +1,6 @@
 package org.com.cnc.qrcode;
 
+import vnp.com.qrcode.R;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.google.ads.AdRequest;
 import com.google.ads.AdSize;
 import com.google.ads.AdView;
@@ -20,8 +22,6 @@ import com.google.zxing.BinaryBitmap;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
-import com.ict.library.common.CommonResize;
-import vnp.com.qrcode.R;
 
 public class QRCodeOrBarcodeScreen extends Activity implements OnClickListener {
 	private static final int REQUEST_0 = 0;
@@ -35,33 +35,33 @@ public class QRCodeOrBarcodeScreen extends Activity implements OnClickListener {
 		setContentView(R.layout.main_menu);
 
 		View view = findViewById(R.id.relativeLayout1);
-		CommonResize._20130408_resizeLandW960H640(view, 960, 640);
+//		CommonResize._20130408_resizeLandW960H640(view, 960, 640);
 
 		findViewById(R.id.Button02).setOnClickListener(this);
-		CommonResize._20130408_resizeLandW960H640(findViewById(R.id.Button02),
-				SIZE_BUTTON, SIZE_BUTTON);
-		CommonResize._20130408_sendViewToPositionLandW960H640(
-				findViewById(R.id.Button02), 480 - SIZE_BUTTON / 2
-						- SIZE_BUTTON - 5, 320 - SIZE_BUTTON / 2);
+//		CommonResize._20130408_resizeLandW960H640(findViewById(R.id.Button02),
+//				SIZE_BUTTON, SIZE_BUTTON);
+//		CommonResize._20130408_sendViewToPositionLandW960H640(
+//				findViewById(R.id.Button02), 480 - SIZE_BUTTON / 2
+//						- SIZE_BUTTON - 5, 320 - SIZE_BUTTON / 2);
 
 		findViewById(R.id.Button01).setOnClickListener(this);
 
 		findViewById(R.id.button1).setOnClickListener(this);
-		CommonResize._20130408_resizeLandW960H640(findViewById(R.id.button1),
-				SIZE_BUTTON, SIZE_BUTTON);
-
-		CommonResize._20130408_sendViewToPositionLandW960H640(
-				findViewById(R.id.button1), 480 - SIZE_BUTTON / 2 + SIZE_BUTTON
-						+ 5, 320 - SIZE_BUTTON / 2);
+//		CommonResize._20130408_resizeLandW960H640(findViewById(R.id.button1),
+//				SIZE_BUTTON, SIZE_BUTTON);
+//
+//		CommonResize._20130408_sendViewToPositionLandW960H640(
+//				findViewById(R.id.button1), 480 - SIZE_BUTTON / 2 + SIZE_BUTTON
+//						+ 5, 320 - SIZE_BUTTON / 2);
 		tVValue = (TextView) findViewById(R.id.textView1);
 
 		// button more app
 		findViewById(R.id.button2).setOnClickListener(this);
-		CommonResize._20130408_resizeLandW960H640(findViewById(R.id.button2),
-				SIZE_BUTTON, SIZE_BUTTON);
-		CommonResize._20130408_sendViewToPositionLandW960H640(
-				findViewById(R.id.button2), 480 - SIZE_BUTTON / 2,
-				320 - SIZE_BUTTON / 2);
+//		CommonResize._20130408_resizeLandW960H640(findViewById(R.id.button2),
+//				SIZE_BUTTON, SIZE_BUTTON);
+//		CommonResize._20130408_sendViewToPositionLandW960H640(
+//				findViewById(R.id.button2), 480 - SIZE_BUTTON / 2,
+//				320 - SIZE_BUTTON / 2);
 
 		tVValue.setOnClickListener(this);
 		String adUnitId = "a14edad3d74598a";

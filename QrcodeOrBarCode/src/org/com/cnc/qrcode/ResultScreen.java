@@ -1,5 +1,6 @@
 package org.com.cnc.qrcode;
 
+import vnp.com.qrcode.R;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.ict.library.common.CommonResize;
-import vnp.com.qrcode.R;
 
 public class ResultScreen extends CommonActivity implements OnClickListener {
 	private TextView textView;
@@ -17,17 +16,17 @@ public class ResultScreen extends CommonActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.result);
 
-		CommonResize._20130408_resizeLandW960H640(
-				findViewById(R.id.linearLayout1), 960, 640);
-
-		int scale = 2;
-		CommonResize._20130408_resizeLandW960H640(
-				findViewById(R.id.idResult_MENU), 300, 300);
-
-		CommonResize._20130408_resizeLandW960H640(
-				findViewById(R.id.linearLayout2), 310 * scale, 310 * scale);
-		CommonResize._20130408_resizeLandW960H640(
-				findViewById(R.id.scrollView1id), 290 * scale, 280 * scale);
+//		CommonResize._20130408_resizeLandW960H640(
+//				findViewById(R.id.linearLayout1), 960, 640);
+//
+//		int scale = 2;
+//		CommonResize._20130408_resizeLandW960H640(
+//				findViewById(R.id.idResult_MENU), 300, 300);
+//
+//		CommonResize._20130408_resizeLandW960H640(
+//				findViewById(R.id.linearLayout2), 310 * scale, 310 * scale);
+//		CommonResize._20130408_resizeLandW960H640(
+//				findViewById(R.id.scrollView1id), 290 * scale, 280 * scale);
 
 		textView = (TextView) findViewById(R.id.textView1);
 		textView.setText(getIntent().getStringExtra("ARG0"));
