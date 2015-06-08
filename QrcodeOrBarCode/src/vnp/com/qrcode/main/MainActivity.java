@@ -1,11 +1,10 @@
 package vnp.com.qrcode.main;
 
 import vnp.com.qrcode.R;
+import android.app.Activity;
 import android.os.Bundle;
 
-import com.vnp.core.activity.BaseFragmentActivity;
-
-public class MainActivity extends BaseFragmentActivity {
+public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
