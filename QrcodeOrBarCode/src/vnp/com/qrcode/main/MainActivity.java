@@ -11,6 +11,7 @@ import com.google.zxing.common.HybridBinarizer;
 
 import vnp.com.qrcode.R;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -46,7 +47,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			Intent intent = new Intent();
 			intent.setType("image/*");
 			intent.setAction(Intent.ACTION_GET_CONTENT);
-			startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_2);
+			startActivityForResult(
+					Intent.createChooser(intent, "Select Picture"), REQUEST_2);
 		} else if (v.getId() == R.id.btn_google_play) {
 			Intent intent = new Intent(Intent.ACTION_VIEW);
 			intent.setData(Uri.parse("market://search?q=pub:Truong Vuong Van"));
@@ -72,6 +74,15 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private void load(final boolean isPath, final Object data) {
 		new AsyncTask<String, String, String>() {
+			ProgressDialog progressDialog;
+
+			protected void onPreExecute() {
+				if (progressDialog == null) {
+					progressDialog = ProgressDialog.show(MainActivity.this,
+							null, null);
+				}
+			};
+
 			@Override
 			protected String doInBackground(String... params) {
 				String result = "";
@@ -89,6 +100,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 
 			protected void onPostExecute(String result) {
+				if (progressDialog != null)
+					progressDialog.dismiss();
 				sendResult(result);
 			};
 		}.execute("");
@@ -115,8 +128,10 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private String getPath(Uri uri) {
 		String[] projection = { MediaStore.Images.Media.DATA };
-		Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
-		int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+		Cursor cursor = getContentResolver().query(uri, projection, null, null,
+				null);
+		int column_index = cursor
+				.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 		String result = "";
 		if (cursor.moveToFirst()) {
 			result = cursor.getString(column_index);
