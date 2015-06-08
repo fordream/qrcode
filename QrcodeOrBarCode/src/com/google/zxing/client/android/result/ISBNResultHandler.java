@@ -16,7 +16,7 @@
 
 package com.google.zxing.client.android.result;
 
-import org.com.cnc.qrcode.R;
+import vnp.com.qrcode.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;

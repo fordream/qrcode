@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.com.cnc.qrcode"
-    android:versionCode="69"
-    android:versionName="3.6" >
+    package="vnp.com.qrcode"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
     <uses-sdk
         android:maxSdkVersion="13"
@@ -22,7 +22,7 @@
         android:icon="@drawable/icon2"
         android:label="@string/app_name" >
         <activity
-            android:name="SplashScreen"
+            android:name="org.com.cnc.qrcode.SplashScreen"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
@@ -70,28 +70,28 @@
             android:label="@string/preferences_name" >
         </activity>
         <activity
-            android:name="BarcodeScreen"
+            android:name="org.com.cnc.qrcode.BarcodeScreen"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="ResultScreen"
+            android:name="org.com.cnc.qrcode.ResultScreen"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="WebScreen"
+            android:name="org.com.cnc.qrcode.WebScreen"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="QRCodeOrBarcodeScreen"
+            android:name="org.com.cnc.qrcode.QRCodeOrBarcodeScreen"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"

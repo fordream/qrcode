@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.google.ads.AdRequest;
 import com.google.ads.AdSize;
 import com.google.ads.AdView;
@@ -22,6 +21,7 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 import com.ict.library.common.CommonResize;
+import vnp.com.qrcode.R;
 
 public class QRCodeOrBarcodeScreen extends Activity implements OnClickListener {
 	private static final int REQUEST_0 = 0;

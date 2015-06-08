@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-
 import com.ict.library.common.CommonResize;
+import vnp.com.qrcode.R;
 
 public class ResultScreen extends CommonActivity implements OnClickListener {
 	private TextView textView;

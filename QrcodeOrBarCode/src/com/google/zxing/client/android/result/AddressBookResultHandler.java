@@ -21,7 +21,7 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.com.cnc.qrcode.R;
+import vnp.com.qrcode.R;
 
 import android.app.Activity;
 import android.telephony.PhoneNumberUtils;
