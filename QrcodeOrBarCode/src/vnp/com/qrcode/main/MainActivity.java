@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -57,13 +58,40 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == REQUEST_0 && resultCode == RESULT_OK) {
 			String contents = data.getStringExtra("key");
-			sendResult(contents);
+			// sendResult(contents);
+
+			load(false, contents);
 		} else if (requestCode == REQUEST_2 && resultCode == RESULT_OK) {
-			Uri selectedImageUri = data.getData();
-			String url = decode(getPath(selectedImageUri));
-			sendResult(url);
+
+			// sendResult(url);
+
+			load(true, data);
 		}
 
+	}
+
+	private void load(final boolean isPath, final Object data) {
+		new AsyncTask<String, String, String>() {
+			@Override
+			protected String doInBackground(String... params) {
+				String result = "";
+				if (!isPath) {
+					if (data != null) {
+						result = data.toString();
+					}
+				} else {
+					if (data != null) {
+						Uri selectedImageUri = ((Intent) data).getData();
+						result = decode(getPath(selectedImageUri));
+					}
+				}
+				return result;
+			}
+
+			protected void onPostExecute(String result) {
+				sendResult(result);
+			};
+		}.execute("");
 	}
 
 	private String decode(String path) {
