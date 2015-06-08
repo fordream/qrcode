@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#00aff0"
+    android:orientation="horizontal" >
+
+    <ImageButton
+        android:id="@+id/btn_google_play"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_50dp"
+        android:background="@drawable/gbuttuon_indicator"
+        android:scaleType="fitXY"
+        android:src="@drawable/g2" />
+
+    <ImageButton
+        android:layout_marginLeft="@dimen/dimen_5dp"
+        android:layout_marginRight="@dimen/dimen_5dp"
+        android:id="@+id/btn_gallery"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_50dp"
+        android:background="@drawable/gbuttuon_indicator"
+        android:scaleType="fitXY"
+        android:src="@drawable/g1"
+        android:text="Scan Barcode/QRcode from image"
+        android:textColor="@color/white"
+        android:textSize="20dip"
+        android:typeface="serif" />
+
+    <ImageButton
+        android:id="@+id/btn_scan_qr_code"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_50dp"
+        android:background="@drawable/gbuttuon_indicator"
+        android:scaleType="fitXY"
+        android:src="@drawable/g3"
+        android:textColor="@color/white"
+        android:typeface="serif" />
+
+</LinearLayout>
