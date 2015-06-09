@@ -21,7 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
-import vnp.com.qrcode.R;
+import org.com.cnc.qrcode.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;

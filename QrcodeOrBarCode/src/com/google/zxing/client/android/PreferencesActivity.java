@@ -19,7 +19,7 @@ package com.google.zxing.client.android;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import vnp.com.qrcode.R;
+import org.com.cnc.qrcode.R;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;

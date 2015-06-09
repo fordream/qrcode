@@ -1,35 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00aff0"
-    android:gravity="center"
-    android:orientation="horizontal" >
+    android:gravity="center" >
 
-    <ImageButton
-        android:id="@+id/btn_google_play"
-        android:layout_width="@dimen/dimen_50dp"
-        android:layout_height="@dimen/dimen_50dp"
-        android:background="@drawable/gbuttuon_indicator"
-        android:scaleType="fitXY"
-        android:src="@drawable/g2" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00aff0"
+        android:gravity="center"
+        android:orientation="horizontal" >
 
-    <ImageButton
-        android:id="@+id/btn_gallery"
-        android:layout_width="@dimen/dimen_50dp"
-        android:layout_height="@dimen/dimen_50dp"
-        android:layout_marginLeft="@dimen/dimen_5dp"
-        android:layout_marginRight="@dimen/dimen_5dp"
-        android:background="@drawable/gbuttuon_indicator"
-        android:scaleType="fitXY"
-        android:src="@drawable/g1" />
+        <ImageButton
+            android:id="@+id/btn_google_play"
+            android:layout_width="@dimen/dimen_50dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:background="@drawable/gbuttuon_indicator"
+            android:scaleType="fitXY"
+            android:src="@drawable/g2" />
 
-    <ImageButton
-        android:id="@+id/btn_scan_qr_code"
-        android:layout_width="@dimen/dimen_50dp"
-        android:layout_height="@dimen/dimen_50dp"
-        android:background="@drawable/gbuttuon_indicator"
-        android:scaleType="fitXY"
-        android:src="@drawable/g3" />
+        <ImageButton
+            android:id="@+id/btn_gallery"
+            android:layout_width="@dimen/dimen_50dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_marginLeft="@dimen/dimen_5dp"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:background="@drawable/gbuttuon_indicator"
+            android:scaleType="fitXY"
+            android:src="@drawable/g1" />
 
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/btn_scan_qr_code"
+            android:layout_width="@dimen/dimen_50dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:background="@drawable/gbuttuon_indicator"
+            android:scaleType="fitXY"
+            android:src="@drawable/g3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/new_main_result"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/xml_qrcode_result_bg"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10dp" >
+
+            <ScrollView
+                android:layout_width="@dimen/dimen_200dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/xml_qrcode_result_bg" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_5dp" >
+
+                    <TextView
+                        android:id="@+id/new_main_result_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:textSize="@dimen/dimen_10dp"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dimen_5dp"
+                android:gravity="center|top"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/btn_result_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_22dp"
+                    android:background="@drawable/xml_btn"
+                    android:text="Email"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/dimen_8dp"
+                    android:typeface="serif" />
+
+                <Button
+                    android:id="@+id/btn_result_web"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_22dp"
+                    android:layout_marginBottom="@dimen/dimen_4dp"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:background="@drawable/xml_btn"
+                    android:text="Web"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/dimen_8dp"
+                    android:typeface="serif" />
+
+                <Button
+                    android:id="@+id/btn_result_sms"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_22dp"
+                    android:background="@drawable/xml_btn"
+                    android:text="SMS"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/dimen_8dp"
+                    android:typeface="serif" />
+
+                <Button
+                    android:id="@+id/btn_result_close"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_22dp"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:background="@drawable/xml_btn"
+                    android:text="Close"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/dimen_8dp"
+                    android:typeface="serif" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
