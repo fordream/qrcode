@@ -23,7 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.com.cnc.qrcode.R;
+import org.vnp.qrcode.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;

@@ -3,7 +3,7 @@ package org.com.cnc.qrcode;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import org.com.cnc.qrcode.R;
+import org.vnp.qrcode.R;
 
 public class SplashScreen extends CommonActivity {
 	private RedirectAsyn redirectAsyn;

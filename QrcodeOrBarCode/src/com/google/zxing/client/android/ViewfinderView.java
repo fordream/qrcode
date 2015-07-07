@@ -19,7 +19,7 @@ package com.google.zxing.client.android;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.com.cnc.qrcode.R;
+import org.vnp.qrcode.R;
 
 import android.content.Context;
 import android.content.res.Resources;

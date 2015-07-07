@@ -3,7 +3,7 @@ package vnp.com.qrcode.main;
 import org.com.cnc.qrcode.BarcodeScreen;
 import org.com.cnc.qrcode.RGBLuminanceSource;
 
-import org.com.cnc.qrcode.R;
+import org.vnp.qrcode.R;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
@@ -72,7 +72,7 @@ public class MainActivity extends Activity implements OnClickListener {
 					Intent.createChooser(intent, "Select Picture"), REQUEST_2);
 		} else if (v.getId() == R.id.btn_google_play) {
 			Intent intent = new Intent(Intent.ACTION_VIEW);
-			intent.setData(Uri.parse("market://search?q=pub:Truong Vuong Van"));
+			intent.setData(Uri.parse("market://search?q=pub:Vnp Game"));
 			startActivity(intent);
 		} else if (v.getId() == R.id.btn_result_email) {
 			Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);

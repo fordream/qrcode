@@ -16,7 +16,7 @@
 
 package com.google.zxing.client.android.result;
 
-import org.com.cnc.qrcode.R;
+import org.vnp.qrcode.R;
 
 import android.app.Activity;
 

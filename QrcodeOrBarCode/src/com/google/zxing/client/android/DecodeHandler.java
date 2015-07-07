@@ -18,7 +18,7 @@ package com.google.zxing.client.android;
 
 import java.util.Hashtable;
 
-import org.com.cnc.qrcode.R;
+import org.vnp.qrcode.R;
 
 import android.os.Bundle;
 import android.os.Handler;

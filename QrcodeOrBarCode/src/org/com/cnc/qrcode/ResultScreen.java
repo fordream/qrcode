@@ -1,6 +1,6 @@
 package org.com.cnc.qrcode;
 
-import org.com.cnc.qrcode.R;
+import org.vnp.qrcode.R;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.net.Uri;

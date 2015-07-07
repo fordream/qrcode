@@ -18,7 +18,7 @@ package com.google.zxing.client.android;
 
 import java.util.Vector;
 
-import org.com.cnc.qrcode.R;
+import org.vnp.qrcode.R;
 
 import android.app.Activity;
 import android.content.Intent;
