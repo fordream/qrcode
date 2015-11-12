@@ -5,36 +5,35 @@ import org.com.cnc.qrcode.RGBLuminanceSource;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.vnp.qrcode.R;
-import android.app.Activity;
-import android.app.AlertDialog.Builder;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
+
+import android.app.Activity;
+import android.app.AlertDialog.Builder;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private static final int REQUEST_0 = 0;
@@ -236,6 +235,22 @@ public class MainActivity extends Activity implements OnClickListener {
 		editor.commit();
 		final int count = ja.length();
 		final JSONArray array = ja;
+
+		listview.setOnItemClickListener(new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+				try {
+					String url = parent.getItemAtPosition(position).toString();
+					Intent intent = new Intent(Intent.ACTION_VIEW);
+					intent.setData(Uri.parse(url));
+					startActivity(intent);
+				} catch (Exception ex) {
+					showDialog(getString(R.string.no_support_web));
+				}
+			}
+
+		});
 		listview.setAdapter(new BaseAdapter() {
 
 			public View getView(int position, View convertView, ViewGroup parent) {
@@ -243,8 +258,8 @@ public class MainActivity extends Activity implements OnClickListener {
 					convertView = new TextView(parent.getContext());
 					((TextView) convertView).setTextColor(Color.WHITE);
 					((TextView) convertView).setTextSize(parent.getResources().getDimension(R.dimen.dimen_10dp));
-					
-					int padding = (int)parent.getResources().getDimension(R.dimen.dimen_10dp);
+
+					int padding = (int) parent.getResources().getDimension(R.dimen.dimen_10dp);
 					((TextView) convertView).setPadding(padding, padding, padding, padding);
 				}
 
