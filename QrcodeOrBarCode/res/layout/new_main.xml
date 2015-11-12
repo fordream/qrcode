@@ -9,8 +9,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#00aff0"
-        android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_70dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10dp" >
+
+            <ImageButton
+                android:id="@+id/btn_scan_qr_code"
+                android:layout_width="@dimen/dimen_50dp"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:background="@drawable/gbuttuon_indicator"
+                android:scaleType="fitXY"
+                android:src="@drawable/g3" />
+
+            <TextView
+                android:id="@+id/txtContent"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dimen_50dp"
+                android:background="@drawable/edt1xx"
+                android:padding="@dimen/dimen_10dp"
+                android:text="http://google.com"
+                android:textColor="#123456"
+                android:maxLines="3"
+                android:textSize="@dimen/dimen_10dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#f5d4d4" />
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:divider="#f5d4d4"
+            android:dividerHeight="1px"
+            android:cacheColorHint="@color/transparent"
+            android:background="@drawable/tran"
+            
+            android:listSelector="@drawable/tran" >
+        </ListView>
 
         <ImageButton
             android:id="@+id/btn_google_play"
@@ -18,7 +62,8 @@
             android:layout_height="@dimen/dimen_50dp"
             android:background="@drawable/gbuttuon_indicator"
             android:scaleType="fitXY"
-            android:src="@drawable/g2" />
+            android:src="@drawable/g2"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/btn_gallery"
@@ -28,15 +73,8 @@
             android:layout_marginRight="@dimen/dimen_5dp"
             android:background="@drawable/gbuttuon_indicator"
             android:scaleType="fitXY"
-            android:src="@drawable/g1" />
-
-        <ImageButton
-            android:id="@+id/btn_scan_qr_code"
-            android:layout_width="@dimen/dimen_50dp"
-            android:layout_height="@dimen/dimen_50dp"
-            android:background="@drawable/gbuttuon_indicator"
-            android:scaleType="fitXY"
-            android:src="@drawable/g3" />
+            android:src="@drawable/g1"
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,7 +82,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal"
-        android:padding="@dimen/dimen_10dp" >
+        android:padding="@dimen/dimen_10dp"
+        android:visibility="gone" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,8 +109,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text=""
-                        android:textSize="@dimen/dimen_10dp"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/dimen_10dp" />
                 </LinearLayout>
             </ScrollView>
 

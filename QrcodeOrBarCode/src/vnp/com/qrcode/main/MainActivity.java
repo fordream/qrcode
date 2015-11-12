@@ -2,14 +2,18 @@ package vnp.com.qrcode.main;
 
 import org.com.cnc.qrcode.BarcodeScreen;
 import org.com.cnc.qrcode.RGBLuminanceSource;
-
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.vnp.qrcode.R;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -17,11 +21,14 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.ScaleAnimation;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.zxing.BinaryBitmap;
@@ -35,6 +42,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private View new_main_result;
 	private TextView new_main_result_txt;
+	private ListView listview;
+	private TextView txtContent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +55,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		new_main_result.setVisibility(View.GONE);
 		new_main_result_txt = (TextView) findViewById(R.id.new_main_result_txt);
 
+		listview = (ListView) findViewById(R.id.listView1);
+		txtContent = (TextView) findViewById(R.id.txtContent);
+		txtContent.setText("");
 		findViewById(R.id.btn_google_play).setOnClickListener(this);
 		findViewById(R.id.btn_gallery).setOnClickListener(this);
 		findViewById(R.id.btn_scan_qr_code).setOnClickListener(this);
@@ -54,6 +66,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		findViewById(R.id.btn_result_close).setOnClickListener(this);
 		findViewById(R.id.btn_result_sms).setOnClickListener(this);
 		findViewById(R.id.btn_result_web).setOnClickListener(this);
+		saveData(null);
 	}
 
 	public void onClick(View v) {
@@ -68,8 +81,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			Intent intent = new Intent();
 			intent.setType("image/*");
 			intent.setAction(Intent.ACTION_GET_CONTENT);
-			startActivityForResult(
-					Intent.createChooser(intent, "Select Picture"), REQUEST_2);
+			startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_2);
 		} else if (v.getId() == R.id.btn_google_play) {
 			Intent intent = new Intent(Intent.ACTION_VIEW);
 			intent.setData(Uri.parse("market://search?q=pub:Vnp Game"));
@@ -81,21 +93,16 @@ public class MainActivity extends Activity implements OnClickListener {
 			String aEmailList[] = { "" };
 			String aEmailCCList[] = {};
 			String aEmailBCCList[] = {};
-			emailIntent
-					.putExtra(android.content.Intent.EXTRA_EMAIL, aEmailList);
+			emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, aEmailList);
 			emailIntent.putExtra(android.content.Intent.EXTRA_CC, aEmailCCList);
-			emailIntent.putExtra(android.content.Intent.EXTRA_BCC,
-					aEmailBCCList);
-			emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-					"Content of Barcode or QRcode");
+			emailIntent.putExtra(android.content.Intent.EXTRA_BCC, aEmailBCCList);
+			emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Content of Barcode or QRcode");
 			emailIntent.setType("plain/text");
-			emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
-					new_main_result_txt.getText().toString());
+			emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, new_main_result_txt.getText().toString());
 			startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 		} else if (v.getId() == R.id.btn_result_sms) {
 			try {
-				String message = "Content of Barcode or QRcode\n"
-						+ new_main_result_txt.getText().toString();
+				String message = "Content of Barcode or QRcode\n" + new_main_result_txt.getText().toString();
 				Intent sendIntent = new Intent(Intent.ACTION_VIEW);
 				sendIntent.putExtra("sms_body", message);
 				sendIntent.setType("vnd.android-dir/mms-sms");
@@ -157,8 +164,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 			protected void onPreExecute() {
 				if (progressDialog == null) {
-					progressDialog = ProgressDialog.show(MainActivity.this,
-							null, null);
+					progressDialog = ProgressDialog.show(MainActivity.this, null, null);
 				}
 			};
 
@@ -202,9 +208,66 @@ public class MainActivity extends Activity implements OnClickListener {
 		// Intent intent = new Intent(this, ResultScreen.class);
 		// intent.putExtra("ARG0", data);
 		// startActivity(intent);
-		new_main_result_txt.setText(data);
 
-		showResult(true);
+		txtContent.setText(data);
+
+		// new_main_result_txt.setText(data);
+
+		// showResult(true);
+
+		saveData(data);
+	}
+
+	private void saveData(String data) {
+		SharedPreferences preferences = getPreferences(0);
+		String currentData = preferences.getString("data", "[]");
+		JSONArray ja = new JSONArray();
+		try {
+			ja = new JSONArray(currentData);
+		} catch (JSONException e) {
+		}
+
+		if (data != null) {
+			ja.put(data);
+		}
+
+		Editor editor = preferences.edit();
+		editor.putString("data", ja.toString());
+		editor.commit();
+		final int count = ja.length();
+		final JSONArray array = ja;
+		listview.setAdapter(new BaseAdapter() {
+
+			public View getView(int position, View convertView, ViewGroup parent) {
+				if (convertView == null) {
+					convertView = new TextView(parent.getContext());
+					((TextView) convertView).setTextColor(Color.WHITE);
+					((TextView) convertView).setTextSize(parent.getResources().getDimension(R.dimen.dimen_10dp));
+					
+					int padding = (int)parent.getResources().getDimension(R.dimen.dimen_10dp);
+					((TextView) convertView).setPadding(padding, padding, padding, padding);
+				}
+
+				((TextView) convertView).setText(getItem(position).toString());
+				return convertView;
+			}
+
+			public long getItemId(int position) {
+				return 0;
+			}
+
+			public Object getItem(int position) {
+				try {
+					return array.get(position).toString();
+				} catch (JSONException e) {
+					return "";
+				}
+			}
+
+			public int getCount() {
+				return count;
+			}
+		});
 	}
 
 	private void showResult(boolean isShow) {
@@ -213,8 +276,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		int height = 0;
 
 		new_main_result.setVisibility(View.VISIBLE);
-		Animation animation = new ScaleAnimation(0, 1, 0, 1, width / 2,
-				height / 2);
+		Animation animation = new ScaleAnimation(0, 1, 0, 1, width / 2, height / 2);
 		animation.setDuration(500);
 		if (isShow) {
 			new_main_result.startAnimation(animation);
@@ -241,10 +303,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private String getPath(Uri uri) {
 		String[] projection = { MediaStore.Images.Media.DATA };
-		Cursor cursor = getContentResolver().query(uri, projection, null, null,
-				null);
-		int column_index = cursor
-				.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+		Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+		int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 		String result = "";
 		if (cursor.moveToFirst()) {
 			result = cursor.getString(column_index);
